@@ -1,5 +1,28 @@
 # X-WAM Evaluation Guidelines
 
+## Evaluation on Slurm
+
+The evaluation-only setup and launch scripts are in [`slurm/`](slurm/README.md).
+They follow the cluster settings in the repository's top-level `slurm` reference
+without modifying it. On the ARM `gb10` partition, use RoboCasa:
+
+```bash
+bash evaluation/slurm/setup.sh robocasa
+bash evaluation/slurm/download.sh robocasa
+
+# Smoke evaluation: one task, one episode
+bash evaluation/slurm/submit.sh --time=01:00:00 -- robocasa --tasks 0 --num-evals 1 --clients 1
+
+# Full evaluation: all 24 tasks, 100 episodes per task
+bash evaluation/slurm/submit.sh robocasa
+```
+
+Each job starts its own broker and policy server, evaluates tasks with bounded
+client concurrency, and writes videos, logs, and `eval_summary.json` under
+`eval_results/<benchmark>/<job_id>/`. RoboTwin's pinned SAPIEN/MPLib packages
+require an x86_64 simulation environment; see the Slurm guide for details.
+Training dependencies and training datasets are unnecessary for this workflow.
+
 ## Installation
 
 Please clone the whole repository with submodules:

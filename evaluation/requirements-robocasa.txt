@@ -1,0 +1,22 @@
+-r requirements.txt
+# RoboCasa pins NumPy 1.23.3 / Numba 0.56.4, while this project's evaluation
+# instructions use NumPy 1.23.5. Numba 0.60 provides Python 3.10 ARM wheels.
+numba==0.60.0
+llvmlite==0.43.0
+# RoboCasa asserts this exact version at import time. RoboSuite's metadata
+# requests >=3.3.0, so both simulator editables are installed with --no-deps.
+mujoco==3.2.6
+qpsolvers[quadprog]==4.8.1
+Pillow
+pygame
+pyyaml
+pynput
+termcolor
+h5py==3.14.0
+lxml
+hidapi
+tianshou==0.4.10
+gym==0.26.2
+gymnasium==0.29.1
+matplotlib==3.7.5
+tensorboard==2.20.0

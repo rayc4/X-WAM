@@ -4,6 +4,8 @@
 CLAUDE.md
 
 *.sh
+!evaluation/slurm/*.sh
+.venv-*/
 experiments/
 eval_results/
 checkpoints/
